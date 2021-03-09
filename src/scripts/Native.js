@@ -243,9 +243,9 @@ export default class extends Core {
                         window.removeEventListener('scroll', onScroll);
                         callback();
                     }
-                };
+                };            
+                window.addEventListener('scroll', onScroll);
             }
-            window.addEventListener('scroll', onScroll);
         }
 
         window.scrollTo({
