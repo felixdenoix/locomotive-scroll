@@ -234,12 +234,17 @@ export default class extends Core {
 
         if (callback) {
             offset = offset.toFixed();
-            let onScroll = function () {
-                if (window.pageYOffset.toFixed() === offset) {
-                    window.removeEventListener('scroll', onScroll);
-                    callback();
-                }
-            };
+            if (parseInt(offset) === 0) {
+                callback();
+                return;
+            } else {    
+                let onScroll = function () {
+                    if (window.pageYOffset.toFixed() === offset) {
+                        window.removeEventListener('scroll', onScroll);
+                        callback();
+                    }
+                };
+            }
             window.addEventListener('scroll', onScroll);
         }
 
